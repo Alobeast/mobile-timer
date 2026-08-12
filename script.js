@@ -47,14 +47,10 @@ function beep({ frequency, duration }) {
 }
 
 async function acquireWakeLock() {
-  if (!("wakeLock" in navigator)) {
-    console.warn("Wake Lock API unavailable (needs a secure context: HTTPS or localhost)");
-    return;
-  }
+  if (!("wakeLock" in navigator)) return;
   try {
     wakeLock = await navigator.wakeLock.request("screen");
   } catch (err) {
-    console.warn("Wake Lock request failed:", err);
     wakeLock = null;
   }
 }
