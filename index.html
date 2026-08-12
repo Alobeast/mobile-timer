@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Timer</title>
+    <title>Countdown</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Hello world</h1>
+    <div class="app">
+      <section id="setup-screen" class="screen is-active">
+        <h1 class="title">Countdown</h1>
+        <div class="duration-display" id="duration-display">05:00</div>
+        <button class="start-button" id="start-button">START</button>
+      </section>
+
+      <section id="running-screen" class="screen">
+        <button class="back-button" id="back-button" aria-label="Back">‹</button>
+        <div class="running-display" id="running-display">05:00</div>
+      </section>
+
+      <section id="finished-screen" class="screen">
+        <div class="finished-emoji">💪</div>
+        <div class="finished-message">Nice work!</div>
+        <div class="finished-duration" id="finished-duration">05:00 completed</div>
+        <button class="start-button" id="done-button">DONE</button>
+      </section>
+    </div>
+
+    <div class="picker" id="duration-picker">
+      <div class="picker-sheet">
+        <ul class="picker-list" id="picker-list"></ul>
+        <button class="picker-ok" id="picker-ok">OK</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
   </body>
 </html>
