@@ -25,7 +25,7 @@ let wakeLock = null;
 
 function unlockAudio() {
   if ("audioSession" in navigator) {
-    navigator.audioSession.type = "playback";
+    navigator.audioSession.type = "transient";
   }
   if (!audioContext) {
     audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -35,15 +35,16 @@ function unlockAudio() {
   }
 }
 
-function beep({ frequency, duration }) {
+function beep({ frequency, duration, delay = 0 }) {
+  const startTime = audioContext.currentTime + delay;
   const oscillator = audioContext.createOscillator();
   const gainNode = audioContext.createGain();
   oscillator.frequency.value = frequency;
   oscillator.connect(gainNode);
   gainNode.connect(audioContext.destination);
-  gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-  oscillator.start();
-  oscillator.stop(audioContext.currentTime + duration);
+  gainNode.gain.setValueAtTime(0.3, startTime);
+  oscillator.start(startTime);
+  oscillator.stop(startTime + duration);
 }
 
 async function acquireWakeLock() {
@@ -127,8 +128,16 @@ function tick() {
 
   if (elapsed < LEAD_IN_MS) {
     const remaining = LEAD_IN_MS - elapsed;
-    runningDisplay.textContent = String(Math.ceil(remaining / 1000)).padStart(2, "0");
+    const currentSecond = Math.ceil(remaining / 1000);
+    runningDisplay.textContent = String(currentSecond).padStart(2, "0");
     runningDisplay.classList.add("lead-in");
+
+    if (currentSecond !== lastSecond) {
+      lastSecond = currentSecond;
+      if (currentSecond <= 3) {
+        beep({ frequency: 880, duration: 0.1 });
+      }
+    }
     return;
   }
 
@@ -143,6 +152,9 @@ function tick() {
       beep({ frequency: 440, duration: 0.4 });
     } else if (currentSecond <= 3) {
       beep({ frequency: 880, duration: 0.1 });
+    } else if (currentSecond === 10) {
+      beep({ frequency: 1400, duration: 0.08 });
+      beep({ frequency: 1400, duration: 0.08, delay: 0.15 });
     }
   }
 
