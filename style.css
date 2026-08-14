@@ -1,6 +1,7 @@
 :root {
   --accent: #ff3b30;
   --green: #34c759;
+  --blue: #0a84ff;
   --bg: #000000;
   --text: #ffffff;
 }
@@ -64,6 +65,10 @@ body {
 
 .mode-interval {
   background: var(--green);
+}
+
+.mode-4x4 {
+  background: var(--blue);
 }
 
 #setup-screen {

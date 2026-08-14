@@ -8,7 +8,8 @@ const pickerOkButton = document.getElementById("picker-ok");
 
 function buildDurationOptions() {
   const values = [];
-  for (let s = 15; s <= 300; s += 15) values.push(s);
+  for (let s = 5; s <= 60; s += 5) values.push(s);
+  for (let s = 75; s <= 300; s += 15) values.push(s);
   for (let s = 330; s <= 3600; s += 30) values.push(s);
   return values;
 }

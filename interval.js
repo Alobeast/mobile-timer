@@ -59,7 +59,7 @@ function buildPhases() {
         durationMs: restMs,
         display: "clock",
         className: "rest",
-        subtitle: `${round} / ${rounds}`,
+        subtitle: `REST · ${round} / ${rounds}`,
         startCue: restStartCue,
       });
     }
@@ -71,13 +71,40 @@ export function enterInterval() {
   showScreen(setupScreen);
 }
 
+function start(onExit) {
+  unlockAudio();
+  showScreen(runningScreen);
+  startSequence({
+    phases: buildPhases(),
+    finishCue,
+    onFinish: showFinishedScreen,
+    onExit,
+  });
+}
+
+export function startNorwegian4x4() {
+  applyConfig(240000, 180000, 4);
+  start(showModePicker);
+}
+
 function showFinishedScreen() {
-  finishedDuration.textContent = `${rounds} rounds completed`;
+  const totalMs = rounds * workMs + (rounds - 1) * restMs;
+  finishedDuration.textContent =
+    `${formatTime(totalMs)} · ${rounds} × ${formatTime(workMs)}/${formatTime(restMs)}`;
   showScreen(finishedScreen);
 }
 
 function updateRounds(delta) {
   rounds = Math.min(MAX_ROUNDS, Math.max(MIN_ROUNDS, rounds + delta));
+  roundsValue.textContent = rounds;
+}
+
+function applyConfig(work, rest, count) {
+  workMs = work;
+  restMs = rest;
+  rounds = count;
+  workDisplay.textContent = formatTime(workMs);
+  restDisplay.textContent = formatTime(restMs);
   roundsValue.textContent = rounds;
 }
 
@@ -98,15 +125,6 @@ restDisplay.addEventListener("click", () => {
 roundsMinus.addEventListener("click", () => updateRounds(-1));
 roundsPlus.addEventListener("click", () => updateRounds(1));
 
-startButton.addEventListener("click", () => {
-  unlockAudio();
-  showScreen(runningScreen);
-  startSequence({
-    phases: buildPhases(),
-    finishCue,
-    onFinish: showFinishedScreen,
-    onExit: enterInterval,
-  });
-});
+startButton.addEventListener("click", () => start(enterInterval));
 
 setupBackButton.addEventListener("click", showModePicker);
