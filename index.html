@@ -18,6 +18,7 @@
         <div class="mode-buttons">
           <button class="mode-button mode-countdown" id="mode-countdown">COUNTDOWN</button>
           <button class="mode-button mode-interval" id="mode-interval">INTERVAL</button>
+          <button class="mode-button mode-emom" id="mode-emom">EMOM</button>
           <button class="mode-button mode-4x4" id="mode-4x4">NORWEGIAN 4×4</button>
         </div>
       </section>
@@ -32,7 +33,7 @@
       <section id="interval-setup-screen" class="screen">
         <button class="back-button" id="interval-back" aria-label="Back">‹</button>
         <h1 class="title">Interval</h1>
-        <div class="interval-config">
+        <div class="config-panel">
           <div class="config-row">
             <span class="config-label">WORK</span>
             <button class="config-value" id="interval-work">04:00</button>
@@ -51,6 +52,30 @@
           </div>
         </div>
         <button class="start-button" id="interval-start">START</button>
+      </section>
+
+      <section id="emom-setup-screen" class="screen">
+        <button class="back-button" id="emom-back" aria-label="Back">‹</button>
+        <h1 class="title">EMOM</h1>
+        <div class="config-panel">
+          <div class="config-row">
+            <span class="config-label">ROUND</span>
+            <button class="config-value" id="emom-round">01:00</button>
+          </div>
+          <div class="config-row">
+            <span class="config-label">ROUNDS</span>
+            <div class="stepper">
+              <button class="stepper-button" id="emom-rounds-minus" aria-label="Fewer rounds">−</button>
+              <span class="stepper-value" id="emom-rounds-value">10</span>
+              <button class="stepper-button" id="emom-rounds-plus" aria-label="More rounds">+</button>
+            </div>
+          </div>
+          <div class="config-row">
+            <span class="config-label">TOTAL</span>
+            <span class="config-total" id="emom-total">10:00</span>
+          </div>
+        </div>
+        <button class="start-button" id="emom-start">START</button>
       </section>
 
       <section id="running-screen" class="screen">

@@ -9,6 +9,7 @@
   --accent: #ff3b30;
   --green: #34c759;
   --blue: #0a84ff;
+  --orange: #ff9f0a;
   --bg: #000000;
   --text: #ffffff;
 }
@@ -75,6 +76,10 @@ body {
   background: var(--green);
 }
 
+.mode-emom {
+  background: var(--orange);
+}
+
 .mode-4x4 {
   background: var(--blue);
 }
@@ -87,7 +92,8 @@ body {
   padding: 2rem 1.5rem;
 }
 
-#interval-setup-screen {
+#interval-setup-screen,
+#emom-setup-screen {
   position: relative;
   flex-direction: column;
   align-items: center;
@@ -95,7 +101,7 @@ body {
   padding: 2rem 1.5rem;
 }
 
-.interval-config {
+.config-panel {
   width: 100%;
   max-width: 320px;
   display: flex;
@@ -123,6 +129,15 @@ body {
   border-radius: 18px;
   background: transparent;
   color: var(--text);
+  font-family: "DSEG7", ui-monospace, monospace;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.config-total {
+  min-width: 150px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.55);
   font-family: "DSEG7", ui-monospace, monospace;
   font-size: 1.75rem;
   font-weight: 700;

@@ -1,5 +1,6 @@
 import { formatTime } from "./format.js";
-import { unlockAudio, beep } from "./audio.js";
+import { unlockAudio } from "./audio.js";
+import { goCue, restCue, finishCue } from "./cues.js";
 import { startSequence } from "./engine.js";
 import { openPicker } from "./picker.js";
 import { showScreen, showModePicker } from "./screens.js";
@@ -24,24 +25,6 @@ let workMs = 4 * 60 * 1000;
 let restMs = 3 * 60 * 1000;
 let rounds = 4;
 
-// Ascending = go hard, descending = ease off, triple = done. Distinct by
-// contour so they're recognisable without looking at the screen.
-function workStartCue() {
-  beep({ frequency: 660, duration: 0.12 });
-  beep({ frequency: 990, duration: 0.2, delay: 0.13 });
-}
-
-function restStartCue() {
-  beep({ frequency: 660, duration: 0.12 });
-  beep({ frequency: 440, duration: 0.2, delay: 0.13 });
-}
-
-function finishCue() {
-  beep({ frequency: 660, duration: 0.12 });
-  beep({ frequency: 880, duration: 0.12, delay: 0.13 });
-  beep({ frequency: 1320, duration: 0.3, delay: 0.26 });
-}
-
 function buildPhases() {
   const phases = [
     { durationMs: LEAD_IN_MS, display: "seconds", className: "lead-in" },
@@ -52,7 +35,7 @@ function buildPhases() {
       display: "clock",
       className: "work",
       subtitle: `${round} / ${rounds}`,
-      startCue: workStartCue,
+      startCue: goCue,
     });
     if (round < rounds) {
       phases.push({
@@ -60,7 +43,7 @@ function buildPhases() {
         display: "clock",
         className: "rest",
         subtitle: `REST · ${round} / ${rounds}`,
-        startCue: restStartCue,
+        startCue: restCue,
       });
     }
   }
