@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Countdown</title>
+    <title>Timer</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="manifest" href="manifest.json" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -13,7 +13,16 @@
   </head>
   <body>
     <div class="app">
-      <section id="setup-screen" class="screen is-active">
+      <section id="mode-screen" class="screen is-active">
+        <h1 class="title">Timer</h1>
+        <div class="mode-buttons">
+          <button class="mode-button mode-countdown" id="mode-countdown">COUNTDOWN</button>
+          <button class="mode-button mode-interval" id="mode-interval">INTERVAL</button>
+        </div>
+      </section>
+
+      <section id="setup-screen" class="screen">
+        <button class="back-button" id="countdown-back" aria-label="Back">‹</button>
         <h1 class="title">Countdown</h1>
         <div class="duration-display" id="duration-display">05:00</div>
         <button class="start-button" id="start-button">START</button>
@@ -39,6 +48,6 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
