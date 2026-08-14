@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "DSEG7";
+  src: url("fonts/DSEG7Classic-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
 :root {
   --accent: #ff3b30;
   --green: #34c759;
@@ -116,8 +123,7 @@ body {
   border-radius: 18px;
   background: transparent;
   color: var(--text);
-  font-family: ui-monospace, monospace;
-  font-variant-numeric: tabular-nums;
+  font-family: "DSEG7", ui-monospace, monospace;
   font-size: 1.75rem;
   font-weight: 700;
 }
@@ -142,8 +148,7 @@ body {
 .stepper-value {
   min-width: 2ch;
   text-align: center;
-  font-family: ui-monospace, monospace;
-  font-variant-numeric: tabular-nums;
+  font-family: "DSEG7", ui-monospace, monospace;
   font-size: 1.5rem;
   font-weight: 700;
 }
@@ -221,9 +226,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: ui-monospace, monospace;
-  font-variant-numeric: tabular-nums;
-  font-size: 3rem;
+  font-family: "DSEG7", ui-monospace, monospace;
+  font-size: 2.2rem;
   font-weight: 700;
 }
 
@@ -241,9 +245,8 @@ body {
 }
 
 .running-display {
-  font-family: ui-monospace, monospace;
-  font-variant-numeric: tabular-nums;
-  font-size: 20vw;
+  font-family: "DSEG7", ui-monospace, monospace;
+  font-size: 19vw;
   font-weight: 700;
   color: var(--accent);
 }
@@ -311,8 +314,7 @@ body {
   align-items: center;
   justify-content: center;
   scroll-snap-align: center;
-  font-family: ui-monospace, monospace;
-  font-variant-numeric: tabular-nums;
+  font-family: "DSEG7", ui-monospace, monospace;
   font-size: 1.25rem;
   color: rgba(255, 255, 255, 0.35);
 }

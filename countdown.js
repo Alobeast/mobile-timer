@@ -12,7 +12,7 @@ const setupBackButton = document.getElementById("countdown-back");
 const finishedScreen = document.getElementById("finished-screen");
 const finishedDuration = document.getElementById("finished-duration");
 
-const LEAD_IN_MS = 5 * 1000;
+const LEAD_IN_MS = 10 * 1000;
 let DURATION_MS = 5 * 60 * 1000;
 
 function tenSecondWarning() {

@@ -16,7 +16,7 @@ const roundsPlus = document.getElementById("rounds-plus");
 const finishedScreen = document.getElementById("finished-screen");
 const finishedDuration = document.getElementById("finished-duration");
 
-const LEAD_IN_MS = 5 * 1000;
+const LEAD_IN_MS = 10 * 1000;
 const MIN_ROUNDS = 1;
 const MAX_ROUNDS = 20;
 
