@@ -28,8 +28,33 @@
         <button class="start-button" id="start-button">START</button>
       </section>
 
+      <section id="interval-setup-screen" class="screen">
+        <button class="back-button" id="interval-back" aria-label="Back">‹</button>
+        <h1 class="title">Interval</h1>
+        <div class="interval-config">
+          <div class="config-row">
+            <span class="config-label">WORK</span>
+            <button class="config-value" id="interval-work">04:00</button>
+          </div>
+          <div class="config-row">
+            <span class="config-label">REST</span>
+            <button class="config-value" id="interval-rest">03:00</button>
+          </div>
+          <div class="config-row">
+            <span class="config-label">ROUNDS</span>
+            <div class="stepper">
+              <button class="stepper-button" id="rounds-minus" aria-label="Fewer rounds">−</button>
+              <span class="stepper-value" id="rounds-value">4</span>
+              <button class="stepper-button" id="rounds-plus" aria-label="More rounds">+</button>
+            </div>
+          </div>
+        </div>
+        <button class="start-button" id="interval-start">START</button>
+      </section>
+
       <section id="running-screen" class="screen">
         <button class="back-button" id="back-button" aria-label="Back">‹</button>
+        <div class="running-subtitle" id="running-subtitle"></div>
         <div class="running-display" id="running-display">05:00</div>
       </section>
 

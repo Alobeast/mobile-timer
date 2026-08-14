@@ -1,7 +1,8 @@
 import { enterCountdown } from "./countdown.js";
+import { enterInterval } from "./interval.js";
 
 const countdownButton = document.getElementById("mode-countdown");
+const intervalButton = document.getElementById("mode-interval");
 
 countdownButton.addEventListener("click", enterCountdown);
-
-// INTERVAL is wired up in the next step.
+intervalButton.addEventListener("click", enterInterval);
