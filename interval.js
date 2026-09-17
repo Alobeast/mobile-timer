@@ -21,9 +21,9 @@ const LEAD_IN_MS = 10 * 1000;
 const MIN_ROUNDS = 1;
 const MAX_ROUNDS = 20;
 
-let workMs = 4 * 60 * 1000;
-let restMs = 3 * 60 * 1000;
-let rounds = 4;
+let workMs = 20 * 1000;
+let restMs = 10 * 1000;
+let rounds = 8;
 
 function buildPhases() {
   const phases = [
